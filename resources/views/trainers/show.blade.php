@@ -9,5 +9,6 @@
         <h3>{{ $trainer->name }}</h3>
         <p>{{ $trainer->descripcion }}</p>
       </div>
+      <a href="/trainers/{{ $trainer->slug }}/edit" class="btn btn-outline-primary btn-block"><i class="fa fa-edit"> Editar</i></a>
 
 @endsection

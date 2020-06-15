@@ -13,7 +13,7 @@
 				<div class="card-body">
 					<h5 class="card-title text-center">{{ $trainer->name }}</h5>
 					<p class="card-text">{{ $trainer->descripcion }}</p>
-					<a href="/trainers/{{ $trainer->id }}" class="btn btn-outline-primary btn-block">Ver más</a>
+					<a href="/trainers/{{ $trainer->slug }}" class="btn btn-outline-primary btn-block">Ver más</a>
 				</div>
 				<div class="card-footer">
 					<p class="card-text">
