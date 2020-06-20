@@ -47,7 +47,8 @@ class TrainerController extends Controller
         $trainer->avatar = $name;
         $trainer->slug = $request->input('name');
         $trainer->save();
-        return 'Saved';
+        return redirect()->route('trianers.index');
+
     }
 
     /**
@@ -90,7 +91,7 @@ class TrainerController extends Controller
         }
         $trainer->save();
 
-        return 'update';
+        return redirect()->route('trianers.index');
     }
 
     /**
