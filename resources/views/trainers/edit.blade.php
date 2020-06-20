@@ -10,7 +10,7 @@
   @method('PUT')
   @csrf
 
-    @include('trainers/form')
+    @include('trainers/form',['trainer'=>$trainer])
 
   <!--<div class="row">
     <div class="col-lg-2">
