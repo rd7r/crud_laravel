@@ -9,8 +9,9 @@
       <form method="POST" action="/trainers" class="control-group my-3" enctype="multipart/form-data">
         @csrf
 
-        @include('trainers.form')
+        @include('trainers.form',['trainer' => new \App\Trainer()])
 
     		<button type="submit" class="btn btn-outline-success mt-5">Enviar</button>
 
       </form>
+@endsection
