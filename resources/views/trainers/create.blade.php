@@ -6,6 +6,8 @@
 
       <h1 class="font-italic">Pirata Create</h1>
 
+      @include('common.errors')
+
       <form method="POST" action="/trainers" class="control-group my-3" enctype="multipart/form-data">
         @csrf
 

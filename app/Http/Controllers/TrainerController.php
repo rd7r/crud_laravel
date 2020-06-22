@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Trainer;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTrainerRequest;
+use Illuminate\Http\RedirectResponse;
 
 class TrainerController extends Controller
 {
@@ -34,7 +36,7 @@ class TrainerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTrainerRequest $request)
     {
         if ($request->hasFile('avatar')) {
           $file = $request->file('avatar');
@@ -47,7 +49,7 @@ class TrainerController extends Controller
         $trainer->avatar = $name;
         $trainer->slug = $request->input('name');
         $trainer->save();
-        return 'Saved';
+        return redirect()->route('trainers.index');
     }
 
     /**
@@ -89,8 +91,8 @@ class TrainerController extends Controller
           $file->move(public_path().'/images/', $name);
         }
         $trainer->save();
-
-        return 'update';
+        return redirect()->route('trainers.show', [$trainer])->with('status','Entrenador Actualizado Correctamente');
+        //return 'update';
     }
 
     /**
@@ -99,8 +101,11 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trainer $trainer)
     {
-        //
+        $file_path = public_path().'/images/'.$trainer->avatar;
+        \File::delete($file_path);
+        $trainer->delete();
+        return redirect()->route('trainers.index');
     }
 }
